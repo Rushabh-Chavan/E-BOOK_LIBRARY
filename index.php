@@ -3,10 +3,8 @@ session_start();
 include "db_conn.php";
 include "php/func-book.php";
 $books = get_all_books($conn);
-
 include "php/func-author.php";
 $authors = get_all_author($conn);
-
 include "php/func-category.php";
 $categories = get_all_categories($conn);
 ?>
@@ -27,7 +25,6 @@ $categories = get_all_categories($conn);
             font-family: 'Segoe UI', sans-serif;
             box-sizing: border-box;
         }
-
         body {
             margin: 0;
             padding: 0;
@@ -35,33 +32,20 @@ $categories = get_all_categories($conn);
             min-height: 100vh;
             color: #fff;
         }
-
         .navbar {
             backdrop-filter: blur(10px);
             background-color: rgba(255, 255, 255, 0.08);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .navbar-brand {
-            font-weight: bold;
-            color: #FFD700 !important;
-        }
-
-        .nav-link {
-            color: #ddd !important;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-        }
-
+        .navbar-brand { font-weight: bold; color: #FFD700 !important; }
+        .nav-link { color: #ddd !important; }
+        .nav-link:hover { color: #fff !important; }
         .search-bar {
             margin-top: 2rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
-
         .search-bar input.form-control {
             padding: 1rem;
             border-radius: 50px 0 0 50px;
@@ -70,11 +54,7 @@ $categories = get_all_categories($conn);
             background: rgba(32, 58, 67, 0.6);
             color: #fff;
         }
-
-        .search-bar input.form-control::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
+        .search-bar input.form-control::placeholder { color: rgba(255, 255, 255, 0.7); }
         .search-bar button {
             border-radius: 0 50px 50px 0;
             border: none;
@@ -83,7 +63,6 @@ $categories = get_all_categories($conn);
             font-weight: bold;
             padding: 0 25px;
         }
-
         .filters {
             margin: 2rem auto;
             max-width: 700px;
@@ -92,7 +71,6 @@ $categories = get_all_categories($conn);
             flex-wrap: wrap;
             gap: 10px;
         }
-
         .filters select {
             padding: 0.6rem 1rem;
             border-radius: 10px;
@@ -109,19 +87,13 @@ $categories = get_all_categories($conn);
             background-position: right 0.75rem center;
             background-size: 16px 12px;
         }
-
-        .filters select option {
-            background-color: #203a43;
-            color: #fff;
-        }
-
+        .filters select option { background-color: #203a43; color: #fff; }
         .book-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             padding: 2rem;
         }
-
         .card {
             background: rgba(255, 255, 255, 0.1);
             border: none;
@@ -133,35 +105,16 @@ $categories = get_all_categories($conn);
             flex-direction: column;
             height: 100%;
         }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
+        .card:hover { transform: translateY(-5px); }
         .card img {
             height: 250px;
             object-fit: cover;
             width: 100%;
             display: block;
         }
-
-        .card-body {
-            padding: 1rem;
-            color: #fff;
-            flex-grow: 1;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-text {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
+        .card-body { padding: 1rem; color: #fff; flex-grow: 1; }
+        .card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .card-text { font-size: 0.9rem; margin-bottom: 0.5rem; }
         .description-truncated {
             display: -webkit-box;
             -webkit-box-orient: vertical;
@@ -169,7 +122,6 @@ $categories = get_all_categories($conn);
             text-overflow: ellipsis;
             white-space: normal;
         }
-
         .show-more-btn {
             background: none;
             border: none;
@@ -180,11 +132,7 @@ $categories = get_all_categories($conn);
             margin-top: 0.5rem;
             text-align: left;
         }
-
-        .show-more-btn:hover {
-            text-decoration: underline;
-        }
-
+        .show-more-btn:hover { text-decoration: underline; }
         .card-footer {
             display: flex;
             justify-content: space-between;
@@ -194,104 +142,75 @@ $categories = get_all_categories($conn);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: auto;
         }
-
-        .btn-open {
-            background-color: #28a745;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .btn-download {
-            background-color: #1e90ff;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        footer {
-            text-align: center;
-            margin: 3rem auto 1rem;
-            color: #bbb;
-            font-size: 0.9rem;
-        }
-
+        .btn-open { background-color: #28a745; color: white; border-radius: 20px; font-size: 0.8rem; }
+        .btn-download { background-color: #1e90ff; color: white; border-radius: 20px; font-size: 0.8rem; }
+        footer { text-align: center; margin: 3rem auto 1rem; color: #bbb; font-size: 0.9rem; }
+        
         /* Redesigned Button Styles */
         /* Redesigned Button Styles */
-        .vote-buttons {
-            display: flex;
-            gap: 8px;
-            /* Space between the like and dislike buttons */
-        }
+.vote-buttons {
+    display: flex;
+    gap: 8px; /* Space between the like and dislike buttons */
+}
+.vote-btn {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle, translucent background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+    color: #FFD700; /* Gold color for the icons */
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+.vote-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+.vote-btn.active {
+    background-color: #FFD700; /* Solid gold when active */
+    color: #203a43; /* Dark text on gold background */
+    border-color: #FFD700;
+}
 
-        .vote-btn {
-            background-color: rgba(255, 255, 255, 0.1);
-            /* Subtle, translucent background */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            /* Light border */
-            color: #FFD700;
-            /* Gold color for the icons */
-            padding: 8px 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-        }
+/* Styles for vote counts */
+.vote-count {
+    margin-left: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white; /* Color for the number */
+}
 
-        .vote-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #FFD700;
+    color: #203a43;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: opacity 0.4s ease, transform 0.3s ease;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+}
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+}
+#backToTop:hover {
+    background: #FFA500;
+    transform: translateY(-3px);
+}
 
-        .vote-btn.active {
-            background-color: #FFD700;
-            /* Solid gold when active */
-            color: #203a43;
-            /* Dark text on gold background */
-            border-color: #FFD700;
-        }
-
-        /* Styles for vote counts */
-        .vote-count {
-            margin-left: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: white;
-            /* Color for the number */
-        }
-
-        /* Back to Top Button */
-        #backToTop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #FFD700;
-            color: #203a43;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: opacity 0.4s ease, transform 0.3s ease;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        #backToTop.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #backToTop:hover {
-            background: #FFA500;
-            transform: translateY(-3px);
-        }
     </style>
 </head>
 
@@ -370,9 +289,7 @@ $categories = get_all_categories($conn);
                     $description = htmlspecialchars($book['description'] ?? 'No description available.');
                     $shortDescription = substr($description, 0, 150);
                     $hasMore = strlen($description) > 150;
-                    if ($hasMore) {
-                        $shortDescription .= '...';
-                    }
+                    if ($hasMore) { $shortDescription .= '...'; }
                 ?>
                     <div class="card">
                         <a href="uploads/cover/<?= htmlspecialchars($book['cover']) ?>" target="_blank">
@@ -398,89 +315,85 @@ $categories = get_all_categories($conn);
                         <div class="card-footer">
                             <a href="uploads/files/<?= htmlspecialchars($book['file']) ?>" target="_blank" class="btn btn-open">Open</a>
                             <a href="uploads/files/<?= htmlspecialchars($book['file']) ?>" download class="btn btn-download">Download</a>
-                            <div class="vote-buttons">
-                                <button class="vote-btn" onclick="vote(<?= $book['id'] ?>, 'like')">
-                                    <i class="fas fa-thumbs-up"></i>
-                                    <span class="vote-count" id="likes-<?= $book['id'] ?>"><?= $book['likes'] ?></span>
-                                </button>
-                                <button class="vote-btn" onclick="vote(<?= $book['id'] ?>, 'dislike')">
-                                    <i class="fas fa-thumbs-down"></i>
-                                    <span class="vote-count" id="dislikes-<?= $book['id'] ?>"><?= $book['dislikes'] ?></span>
-                                </button>
-                            </div>
+<div class="vote-buttons">
+    <button class="vote-btn" onclick="vote(<?= $book['id'] ?>, 'like')">
+        <i class="fas fa-thumbs-up"></i>
+        <span class="vote-count" id="likes-<?= $book['id'] ?>"><?= $book['likes'] ?></span>
+    </button>
+    <button class="vote-btn" onclick="vote(<?= $book['id'] ?>, 'dislike')">
+        <i class="fas fa-thumbs-down"></i>
+        <span class="vote-count" id="dislikes-<?= $book['id'] ?>"><?= $book['dislikes'] ?></span>
+    </button>
+</div>
                         </div>
                     </div>
                 <?php } ?>
             </div>
         <?php } ?>
     </div>
-    <button id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+<button id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
     <footer>
         &copy; <?= date("Y") ?> Online Book Store. All rights reserved.
     </footer>
 
     <script>
-        function vote(bookId, type) {
-            $.ajax({
-                url: "vote.php",
-                type: "POST",
-                data: {
-                    book_id: bookId,
-                    vote: type
-                },
-                dataType: "json",
-                success: function(response) {
-                    if (response.likes !== undefined && response.dislikes !== undefined) {
-                        // Update the like and dislike counts dynamically
-                        $("#likes-" + bookId).text(response.likes);
-                        $("#dislikes-" + bookId).text(response.dislikes);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error: " + error);
-                }
-            });
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".show-more-btn").on("click", function() {
-                const bookId = $(this).data("book-id");
-                const truncated = $("#desc-" + bookId + " .truncated-content");
-                const full = $("#desc-" + bookId + " .full-content");
-
-                if (full.is(":visible")) {
-                    full.hide();
-                    truncated.show();
-                    $(this).text("Show More");
-                } else {
-                    full.show();
-                    truncated.hide();
-                    $(this).text("Show Less");
-                }
-            });
-        });
-    </script>
-    <script>
-        const backToTopBtn = document.getElementById("backToTop");
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add("show");
-            } else {
-                backToTopBtn.classList.remove("show");
+function vote(bookId, type) {
+    $.ajax({
+        url: "vote.php",
+        type: "POST",
+        data: { book_id: bookId, vote: type },
+        dataType: "json",
+        success: function(response) {
+            if (response.likes !== undefined && response.dislikes !== undefined) {
+                // Update the like and dislike counts dynamically
+                $("#likes-" + bookId).text(response.likes);
+                $("#dislikes-" + bookId).text(response.dislikes);
             }
-        });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error: " + error);
+        }
+    });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+$(document).ready(function () {
+    $(".show-more-btn").on("click", function () {
+            const bookId = $(this).data("book-id");
+                    const truncated = $("#desc-" + bookId + " .truncated-content");
+                            const full = $("#desc-" + bookId + " .full-content");
 
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    </script>
+                                    if (full.is(":visible")) {
+                                                full.hide();
+                                                            truncated.show();
+                                                                        $(this).text("Show More");
+                                                                                } else {
+                                                                                            full.show();
+                                                                                                        truncated.hide();
+                                                                                                                    $(this).text("Show Less");
+                                                                                                                            }
+                                                                                                                                });
+                                                                                                                                });
+    
+    
 
+                                                                                                                            </script>
+  <script>
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add("show");
+    } else {
+        backToTopBtn.classList.remove("show");
+    }
+});
+
+backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+                                                                                                                          
 </body>
-
 </html>
